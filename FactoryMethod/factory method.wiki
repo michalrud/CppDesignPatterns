@@ -1,0 +1,60 @@
+= factory method =
+
+== problem ==
+
+ * Mamy kilka możliwych implementacji, stosowanych zależnie od okoliczności
+ * Chcemy decyzję na temat tego, która implementacja będzie użyta, zaimplementować w osobnym miejscu, aby nie podejmować tej decyzji tam, gdzie obiekt jest faktycznie tworzony
+
+{{{plantuml
+@startuml
+class ObjectA {
+ +performAction()
+}
+class ObjectB {
+ +performAction()
+}
+
+Client --> ObjectA
+Client --> ObjectB
+
+@enduml
+}}}
+
+== rozwiązanie ==
+
+ * Implementujemy w klasach wspólny interfejs
+ * Tworzymy funkcję, która zwraca stworzony obiekt klasy wybranej na podstawie konkretnych warunków
+
+{{{plantuml
+@startuml
+class Client
+class Object {
+ {static} +Create()
+ {abstract} +performAction()
+}
+Client-->Object
+
+together {
+    class ObjectA {
+     +performAction()
+    }
+    class ObjectB {
+     +performAction()
+    }
+}
+
+ObjectA --|> Object
+ObjectB --|> Object
+
+@enduml
+}}}
+
+== podsumowanie ==
+
+ * Podstawowe cechy
+     * Pozwala ukryć przed klientem szczegóły tworzenia obiektu, których nie da się zawrzeć w konstruktorze
+     * Pozwala na łatwą zmianę klasy implementacyjnej bez zmiany kodu klientów
+ * Przykładowe zastosowania
+     * Wybranie biblioteki graficznej w zależności od używanego środowiska graficznego
+     * wybranie wersji silnika renderującego w zależności od tego, która wersja DirectX jest wspierana przez wykryty sprzęt
+

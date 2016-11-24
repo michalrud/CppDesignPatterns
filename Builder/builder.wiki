@@ -1,0 +1,42 @@
+= builder =
+
+== problem ==
+
+ * Chcemy móc tworzyć różne rodzaje obiektów w ten sam sposób, jakby "od szablonu" 
+
+{{{plantuml
+@startuml
+Client --|> ImplementationOne
+Client --|> ImplementationTwo
+Client --|> ImplementationThree
+@enduml
+}}}
+
+== rozwiązanie ==
+
+ * Należy stworzyć obiekt, który będzie w stanie skonfigurować każdy z tych obiektów w ten sam sposób
+ * Obiekt budowniczego powinien móc zwrócić stworzony i skonfigurowany obiekt
+
+{{{plantuml
+@startuml
+class Builder {
+ +setupOne()
+ +setupTwo()
+ +setupThree()
+ +getObject()
+}
+
+Client --|> Builder
+Builder <-- ImplementationOne
+Builder <-- ImplementationTwo
+Builder <-- ImplementationThree
+@enduml
+}}}
+
+== podsumowanie ==
+
+ * Podstawowe cechy:
+     * Pozwala na ukrycie logiki wybierającej rodzaj obiektu przed klientem
+     * Unifikuje sposób tworzenia i konfiguracji każdego rodzaju obiektu
+ * Przykłady zastosowania:
+     * Konstrukcja wiadomości w różnych formatach (XML, ProtoBuf...)

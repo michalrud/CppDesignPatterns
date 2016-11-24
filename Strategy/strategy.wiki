@@ -1,0 +1,51 @@
+= strategy =
+
+== problem ==
+
+ * W zależności od okoliczności chcemy użyć jednej z kilku możliwych implementacji.
+
+{{{plantuml
+@startuml
+class ImplementationOne {
+ +action()
+}
+class ImplementationTwo {
+ +action()
+}
+
+Client --> ImplementationOne
+Client --> ImplementationTwo
+@enduml
+}}}
+
+== rozwiązanie ==
+
+ * Tworzymy klasę implementującą ten sam interfejs co klasy konkretnych implementacji
+ * Metoda wywołująca akcję decyduje, którą z implementacji wywołać
+
+{{{plantuml
+@startuml
+class Strategy {
+ +action()
+}
+class ImplementationOne {
+ +action()
+}
+class ImplementationTwo {
+ +action()
+}
+
+Client --> Strategy
+Strategy <|.. ImplementationOne
+Strategy <|.. ImplementationTwo
+@enduml
+}}}
+
+== podsumowanie ==
+
+ * Podstawowe cechy:
+     * Klasa klienta nie ma pojęcia o istnieniu podrzędnych klas implementacyjnych
+ * Przykłady:
+     * Inteligentne dobieranie algorytmu w zależności od rodzaju danych wejściowych
+     * Pozwala na łatwe mockowanie przykrywanej funkcjonalności
+
