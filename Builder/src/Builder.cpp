@@ -1,13 +1,23 @@
 #include "Builder.hpp"
 
-void Builder::addParagraph(const std::string& text)
+Builder::Builder() : page("<html><head>")
+{}
+
+void Builder::addHeader(const std::string &text)
 {
+    this->page.append("<h1>");
+    this->page.append(text);
+    this->page.append("</h1>");
 }
 
-void Builder::addHeader(const std::string& text)
+void Builder::addParagraph(const std::string &text)
 {
+    this->page.append("<p>");
+    this->page.append(text);
+    this->page.append("</p>");
 }
 
-const std::string& Builder::getContent() const
+const std::string& Builder::getPage() const
 {
+    return this->page;
 }

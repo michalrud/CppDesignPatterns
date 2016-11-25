@@ -1,13 +1,11 @@
 #include <iostream>
-#include <string>
+#include "Builder.hpp"
 
 int main(void)
 {
-    std::string page;
-    page.append("<html><body>");
-    page.append("<h1>Welcome to my website</h1>");
-    page.append("<p>This website is under construction.</p>");
-    page.append("</body></html>");
-    std::cout << page;
+    Builder builder;
+    builder.addHeader("Welcome to my website");
+    builder.addParagraph("This website is under construction.");
+    std::cout << builder.getPage();
     return 0;
 }
