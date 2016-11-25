@@ -14,7 +14,7 @@ Client --|> ImplementationThree
 
 == rozwiązanie ==
 
- * Należy stworzyć obiekt, który będzie w stanie skonfigurować każdy z tych obiektów w ten sam sposób
+ * Należy stworzyć obiekt, który będzie w stanie skonfigurować każdy z tych obiektów w podobny sposób
  * Obiekt budowniczego powinien móc zwrócić stworzony i skonfigurowany obiekt
 
 {{{plantuml
