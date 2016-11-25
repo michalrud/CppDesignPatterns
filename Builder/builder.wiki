@@ -6,9 +6,16 @@
 
 {{{plantuml
 @startuml
-Client --|> ImplementationOne
-Client --|> ImplementationTwo
-Client --|> ImplementationThree
+class DesktopPage {
+ +addParagraph()
+ +addHeader()
+}
+class MobilePage {
+ +addParagraph()
+ +addHeader()
+}
+Client --|> DesktopPage
+Client --|> MobilePage
 @enduml
 }}}
 
@@ -19,17 +26,22 @@ Client --|> ImplementationThree
 
 {{{plantuml
 @startuml
+class DesktopPage {
+ +addParagraph()
+ +addHeader()
+}
+class MobilePage {
+ +addParagraph()
+ +addHeader()
+}
 class Builder {
- +setupOne()
- +setupTwo()
- +setupThree()
+ +addTitledParagraph(title, text)
  +getObject()
 }
 
 Client --|> Builder
-Builder <-- ImplementationOne
-Builder <-- ImplementationTwo
-Builder <-- ImplementationThree
+Builder --> DesktopPage
+Builder --> MobilePage
 @enduml
 }}}
 
