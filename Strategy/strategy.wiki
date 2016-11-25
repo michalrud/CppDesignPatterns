@@ -6,15 +6,19 @@
 
 {{{plantuml
 @startuml
-class ImplementationOne {
- +action()
+class Fb {
+ +postStatus()
 }
-class ImplementationTwo {
- +action()
+class Twitter {
+ +postStatus()
+}
+class Medium {
+ +postStatus()
 }
 
-Client --> ImplementationOne
-Client --> ImplementationTwo
+Client --> Fb
+Client --> Twitter
+Client --> Medium
 @enduml
 }}}
 
@@ -26,18 +30,22 @@ Client --> ImplementationTwo
 {{{plantuml
 @startuml
 class Strategy {
- +action()
+ +postStatus()
 }
-class ImplementationOne {
- +action()
+class Fb {
+ +postStatus()
 }
-class ImplementationTwo {
- +action()
+class Twitter {
+ +postStatus()
+}
+class Medium {
+ +postStatus()
 }
 
 Client --> Strategy
-Strategy <|.. ImplementationOne
-Strategy <|.. ImplementationTwo
+Strategy <|.. Fb
+Strategy <|.. Twitter
+Strategy <|.. Medium
 @enduml
 }}}
 
