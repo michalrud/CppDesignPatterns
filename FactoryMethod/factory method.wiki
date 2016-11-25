@@ -7,15 +7,22 @@
 
 {{{plantuml
 @startuml
-class ObjectA {
- +performAction()
+class GsmPhone {
+ +makeCall()
+ +sendMessage()
 }
-class ObjectB {
- +performAction()
+class WcdmaPhone {
+ +makeCall()
+ +sendMessage()
+}
+class LtePhone {
+ +makeCall()
+ +sendMessage()
 }
 
-Client --> ObjectA
-Client --> ObjectB
+Client --> GsmPhone
+Client --> WcdmaPhone
+Client --> LtePhone
 
 @enduml
 }}}
@@ -28,23 +35,27 @@ Client --> ObjectB
 {{{plantuml
 @startuml
 class Client
-class Object {
+class Factory {
  {static} +Create()
- {abstract} +performAction()
 }
-Client-->Object
+Client-->Factory
 
-together {
-    class ObjectA {
-     +performAction()
-    }
-    class ObjectB {
-     +performAction()
-    }
+class GsmPhone {
+ +makeCall()
+ +sendMessage()
+}
+class WcdmaPhone {
+ +makeCall()
+ +sendMessage()
+}
+class LtePhone {
+ +makeCall()
+ +sendMessage()
 }
 
-ObjectA --|> Object
-ObjectB --|> Object
+GsmPhone <-- Factory
+WcdmaPhone <-- Factory
+LtePhone <-- Factory
 
 @enduml
 }}}
