@@ -2,8 +2,8 @@
 
 == problem ==
 
- * Mamy kilka możliwych implementacji, stosowanych zależnie od okoliczności
- * Chcemy decyzję na temat tego, która implementacja będzie użyta, zaimplementować w osobnym miejscu, aby nie podejmować tej decyzji tam, gdzie obiekt jest faktycznie tworzony
+ * W zależności od okoliczności chcemy tworzyć różne obiekty
+ * Klient musi podjąć decyzję o wyborze konkretnej typu obiektu
 
 {{{plantuml
 @startuml
@@ -30,7 +30,7 @@ Client --> LtePhone
 == rozwiązanie ==
 
  * Implementujemy w klasach wspólny interfejs
- * Tworzymy funkcję, która zwraca stworzony obiekt klasy wybranej na podstawie konkretnych warunków
+ * Tworzymy funkcję, która zwraca stworzony obiekt klasy wybranej na podstawie zdefiniowanych wewnątrz warunków
 
 {{{plantuml
 @startuml
@@ -63,7 +63,7 @@ LtePhone <-- Factory
 == podsumowanie ==
 
  * Podstawowe cechy
-     * Pozwala ukryć przed klientem szczegóły tworzenia obiektu, których nie da się zawrzeć w konstruktorze
+     * Pozwala ukryć przed klientem szczegóły tworzenia obiektu
      * Pozwala na łatwą zmianę klasy implementacyjnej bez zmiany kodu klientów
  * Przykładowe zastosowania
      * Wybranie biblioteki graficznej w zależności od używanego środowiska graficznego
