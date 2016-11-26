@@ -1,7 +1,5 @@
 #pragma once
-
-#include <memory>
-#include "IPage.hpp"
+#include <string>
 
 class Builder
 {
@@ -9,8 +7,8 @@ public:
     Builder() = default;
     ~Builder() = default;
 
-    std::unique_ptr<IPage>&& getObject();
-private:
-    std::unique_ptr<IPage> obj;
-};
+    void addHeader(const std::string& text);
+    void addParagraph(const std::string& text);
 
+    const std::string& getContent() const;
+};

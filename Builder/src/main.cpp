@@ -1,25 +1,22 @@
 #include <iostream>
-#include "DesktopPage.hpp"
-#include "MobilePage.hpp"
+#include <string>
 
 int main(void)
 {
     bool isDesktop = true;
     std::cout << "Is it a desktop computer? 1 if so, 0 otherwise." << std::endl;
     std::cin >> isDesktop;
+    std::string page;
     if (isDesktop)
     {
-        DesktopPage desktop;
-        desktop.addHeader("Welcome to my website");
-        desktop.addHeader("This website is under construction.");
-        std::cout << desktop.getContent();
+        page.append("Desktop header: Welcome to my website");
+        page.append("Desktop paragraph: This website is under construction.");
     }
     else
     {
-        MobilePage mobile;
-        mobile.addHeader("Welcome to my website");
-        mobile.addHeader("This website is under construction.");
-        std::cout << mobile.getContent();
+        page.append("Mobile header: Welcome to my website");
+        page.append("Mobile paragraph: This website is under construction.");
     }
+    std::cout << page;
     return 0;
 }

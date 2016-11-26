@@ -1,7 +1,13 @@
 #include "Builder.hpp"
 
-std::unique_ptr<IPage>&& Builder::getObject()
+void Builder::addParagraph(const std::string& text)
 {
-    return std::move(obj);
 }
 
+void Builder::addHeader(const std::string& text)
+{
+}
+
+const std::string& Builder::getContent() const
+{
+}
