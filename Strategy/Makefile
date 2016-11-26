@@ -1,5 +1,5 @@
 PROG_NAME=Strategy
-CXXFLAGS=-std=c++11 -Wall -MMD -I src
+CXXFLAGS=-std=c++14 -Wall -MMD -I src
 CPP_FILES = $(wildcard src/*.cpp)
 OBJ_FILES = $(addprefix obj/,$(notdir $(CPP_FILES:.cpp=.o)))
 
