@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8)
 project(Strategy CXX)
 
 file(GLOB sources
-    "src/*.h"
+    "src/*.hpp"
     "src/*.cpp"
 )
 
@@ -12,4 +12,3 @@ set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY CXX_STANDARD 14)
 add_custom_target(run
     COMMAND ${CMAKE_PROJECT_NAME}
 )
-
